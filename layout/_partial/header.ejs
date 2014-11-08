@@ -1,0 +1,39 @@
+
+      <ul class="menu clearfix gradient">
+        <% for (var i in UserConfig.menu) {
+          if ( Object.prototype.toString.call(UserConfig.menu[i]) === '[object Object]' ) {
+            %>
+            <ul class="submenu-1">
+              <% for (var j in UserConfig.menu[i]) {
+                %>
+                <li class="menu-level-1"><%- link_to(RealPath(UserConfig.menu[i][j]),__(j)) -%></li>
+                <%
+              } %>
+            </ul>
+            <%
+          } else {
+            %>
+            <li class="menu-level-0"><%-link_to(RealPath(UserConfig.menu[i]),__(i)) -%></li>
+            <%
+          }
+        } %>
+
+        <% if (UserConfig.rss) { %>
+          <li class="menu-level-0"><a href="<%- RealPath(UserConfig.rss) %>">RSS</a></li>
+        <% } %>
+        <% if (UserConfig.twitter && UserConfig.twitter.username) { %>
+          <li class="menu-level-0"><a href="https://twitter.com/<%- UserConfig.twitter.username %>">twitter</a></li>
+        <% } else if (UserConfig.twitter_id) { %>
+          <li class="menu-level-0"><a href="https://twitter.com/<%- UserConfig.twitter_id %>">twitter</a></li>
+        <% } %>
+        <% if (UserConfig.facebook_id) { %>
+          <li class="menu-level-0"><a href="https://www.facebook.com/<%- UserConfig.facebook_id %>">facebook</a></li>
+        <% } %>
+        <% if (UserConfig.linked_id) { %>
+          <li class="menu-level-0"><a href="http://www.linkedin.com/in/<%- UserConfig.linkedin_id %>">linkedin</a></li>
+        <% } %>
+        <% if (UserConfig.github_id) { %>
+          <li class="menu-level-0"><a href="https://github.com/<%- UserConfig.github_id %>">github</a></li>
+        <% } %>
+
+      </ul>

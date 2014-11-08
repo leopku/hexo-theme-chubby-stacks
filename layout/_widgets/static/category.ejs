@@ -1,0 +1,2 @@
+<%var str = '';if (site.categories.length){str = '<div class="clearfix"><ul class="tabs">';site.categories.sort('name').each(function(item){if (!item.parent && item.posts.length)str += '<li><a class="link-author" href="' + config.root + item.path + '">' + item.name + '<sup class="note">' + item.posts.length + '</sup></a></li>';});str += '</ul></div>';}%>
+<%-str%>

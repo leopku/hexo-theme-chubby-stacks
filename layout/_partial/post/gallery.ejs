@@ -1,0 +1,30 @@
+<%if (!item.photos || !item.photos.length) return;%>
+
+<div id="carousel-captions" class="widget-container widget_gallery boxed boxed-cream">
+  <div class="inner">
+    <div class="carousel slide" data-interval="5000">
+      <div class="carousel-inner">
+        <%item.photos.forEach(function(photo,index){var item = photo.split('>>'); -%>
+        <div class="item<%- index==0?' active':''%>">
+          <img src="<%-RealPath(item[0])%>">
+          <div class="carousel-caption">
+            <h6><%- item[1]%></h6>
+            <p><%- item[2]%></p>
+          </div>
+        </div>
+        <%}); -%>
+        
+      </div> <!-- // .carousel-inner -->
+
+      <ol class="carousel-indicators">
+        <%for(var i=0;i<item.photos.length;++i){%>
+          <li data-target="#carousel-captions" data-slide-to="<%-i%>" <%-i==0?'class="active"':''%>></li>
+        <%}%>
+      </ol> <!-- // .carousel-indicators -->
+
+                            <a class="carousel-control left" href="#carousel-captions" data-slide="prev"></a>
+                            <a class="carousel-control right" href="#carousel-captions" data-slide="next"></a>
+
+    </div>
+  </div>
+</div>
